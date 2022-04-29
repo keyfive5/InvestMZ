@@ -18,7 +18,7 @@
             volume: 0
             allow_stretch: False
             options: {'eos': 'loop'}
-            opacity: 0.75
+            opacity: 0.25
 
         GridLayout:
             cols: 1
@@ -33,7 +33,7 @@
                 id: my_label
                 name: 'my_label'
                 text: "How much would you like to invest?"
-                font_size: 18
+                font_size: 48
                 color: '90EE90'
 
             TextInput:
@@ -53,6 +53,39 @@
 <Screen2>:
     FloatLayout:
         Video:
+            source: 'spiral.mp4'
+            state: 'play'
+            volume: 0
+            allow_stretch: False
+            options: {'eos': 'loop'}
+            opacity: 0.25
 
-    Label:
-        text:"Welcome to Screen2"
+        GridLayout:
+            cols: 1
+            size_hint: (0.6,0.7)
+            pos_hint: {"center_x":0.5, "center_y":0.5}
+
+            Image:
+                source: 'mzi.png'
+                size_hint: (1.5,1.5)
+
+            Label:
+                id: my_label
+                name: 'my_label'
+                text: "What is your risk tolerance (1-5)?"
+                font_size: 48
+                color: 'FF0000'
+
+            TextInput:
+                id: my_input
+                name: 'my_input'
+                multiline: False
+                padding_y: (20,20)
+                size_hint: (1, 0.5)
+
+            Button:
+                text:"Submit"
+                size_hint: (1,0.5)
+                bold: True
+                background_color: '90EE90'
+                on_press: root.parent.ids['screen2'].callback(self)
