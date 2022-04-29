@@ -4,12 +4,15 @@
         id: screen1
         name: 'screen1'
 
-    Screen2
+    Screen2:
         id: screen2
         name: 'screen2'
 
-<Screen1>:
+    r1Screen:
+        id: r1screen
+        name: 'r1screen'
 
+<Screen1>:
     FloatLayout:
 
         Video:
@@ -89,3 +92,13 @@
                 bold: True
                 background_color: '90EE90'
                 on_press: root.parent.ids['screen2'].callback(self)
+
+<r1Screen>:
+    FloatLayout:
+        GridLayout:
+            Label:
+                id: answer
+                name: 'answer'
+                text: "What is your risk tolerance (1-5)?"
+                font_size: 48
+                color: 'FF0000'

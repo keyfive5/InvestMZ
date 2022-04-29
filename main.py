@@ -10,6 +10,8 @@ from kivy.uix.widget import Widget
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 
+entry = ""
+
 class SM(ScreenManager):
 
     def __init__(self, **kwargs):
@@ -50,6 +52,15 @@ class Screen2(Screen):
         else:
             greeting.text = "Invalid"
             greeting.color = "#FF0000"
+
+        # If input is 1
+        if int(entry) == 1:
+            self.manager.current = 'r1screen'
+
+class r1Screen(Screen):
+    def __init__(self, **kwargs):
+        super(r1Screen, self).__init__(**kwargs)
+
 
 class MZ_Invest(App):
     def build(self):
