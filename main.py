@@ -10,7 +10,6 @@ from kivy.uix.widget import Widget
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 
-entry = ""
 
 class SM(ScreenManager):
 
@@ -18,14 +17,17 @@ class SM(ScreenManager):
         super(SM, self).__init__(**kwargs)
 
 class Screen1(Screen):
-
+    investment = 0
     def __init__(self, **kwargs):
         super(Screen1, self).__init__(**kwargs)
+
 
     def callback(self, instance):
 
         entry = self.manager.ids['screen1'].ids.my_input.text
         greeting = self.manager.ids['screen1'].ids.my_label
+        self.investment = entry
+
 
         if entry.isnumeric() and int(entry) >= 10000:
             greeting.text = "Calculating: $" + entry
@@ -60,6 +62,10 @@ class Screen2(Screen):
 class r1Screen(Screen):
     def __init__(self, **kwargs):
         super(r1Screen, self).__init__(**kwargs)
+
+    def callback(self, instance):
+        greeting = self.manager.ids['r1screen'].ids.my_label
+        greeting.text = "Invest " + str(float(Screen1.investment)/12) + " monthly in VFV.TO for a year"
 
 
 class MZ_Invest(App):

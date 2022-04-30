@@ -92,13 +92,18 @@
                 bold: True
                 background_color: '90EE90'
                 on_press: root.parent.ids['screen2'].callback(self)
+                on_press: root.parent.ids['r1screen'].callback(self)
 
 <r1Screen>:
     FloatLayout:
         GridLayout:
+            cols: 1
+            size_hint: (0.6,0.7)
+            pos_hint: {"center_x":0.5, "center_y":0.5}
+
             Label:
-                id: answer
-                name: 'answer'
-                text: "What is your risk tolerance (1-5)?"
-                font_size: 48
+                id: my_label
+                name: 'my_label'
+                text: "Invest X monthly in VFV.TO for a year"
+                font_size: 36
                 color: 'FF0000'
