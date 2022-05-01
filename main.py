@@ -21,6 +21,8 @@ class Screen1(Screen):
     def __init__(self, **kwargs):
         super(Screen1, self).__init__(**kwargs)
 
+    def exit(self, instance):
+        quit()
 
     def callback(self, instance):
 
@@ -42,6 +44,9 @@ class Screen2(Screen):
     def __init__(self, **kwargs):
         super(Screen2, self).__init__(**kwargs)
 
+    def back(self, instance):
+        self.manager.current = 'screen1'
+
     def callback(self, instance):
 
         entry = self.manager.ids['screen2'].ids.my_input.text
@@ -58,6 +63,14 @@ class Screen2(Screen):
         # If input is 1
         if int(entry) == 1:
             self.manager.current = 'r1screen'
+        if int(entry) == 2:
+            self.manager.current = 'r2screen'
+        if int(entry) == 3:
+            self.manager.current = 'r3screen'
+        if int(entry) == 4:
+            self.manager.current = 'r4screen'
+        if int(entry) == 5:
+            self.manager.current = 'r5screen'
 
 class r1Screen(Screen):
     def __init__(self, **kwargs):
@@ -67,6 +80,21 @@ class r1Screen(Screen):
         greeting = self.manager.ids['r1screen'].ids.my_label
         greeting.text = "Invest " + str(float(Screen1.investment)/12) + " monthly in VFV.TO for a year"
 
+class r2Screen(Screen):
+    def __init__(self, **kwargs):
+        super(r2Screen, self).__init__(**kwargs)
+
+class r3Screen(Screen):
+    def __init__(self, **kwargs):
+        super(r3Screen, self).__init__(**kwargs)
+
+class r4Screen(Screen):
+    def __init__(self, **kwargs):
+        super(r4Screen, self).__init__(**kwargs)
+
+class r5Screen(Screen):
+    def __init__(self, **kwargs):
+        super(r5Screen, self).__init__(**kwargs)
 
 class MZ_Invest(App):
     def build(self):

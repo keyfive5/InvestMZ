@@ -12,9 +12,24 @@
         id: r1screen
         name: 'r1screen'
 
+    r2Screen:
+        id: r2screen
+        name: 'r2screen'
+
+    r3Screen:
+        id: r3screen
+        name: 'r3screen'
+
+    r4Screen:
+        id: r4screen
+        name: 'r4screen'
+
+    r5Screen:
+        id: r5screen
+        name: 'r5screen'
+
 <Screen1>:
     FloatLayout:
-
         Video:
             source: 'cubes.mp4'
             state: 'play'
@@ -52,6 +67,14 @@
                 bold: True
                 background_color: '90EE90'
                 on_press: root.parent.ids['screen1'].callback(self)
+
+            Button:
+                text:"Exit"
+                size_hint: (0.25,0.25)
+                pos_hint:(0.1,0.1)
+                bold: True
+                background_color: '8b0000'
+                on_press: root.parent.ids['screen1'].exit(self)
 
 <Screen2>:
     FloatLayout:
@@ -94,6 +117,14 @@
                 on_press: root.parent.ids['screen2'].callback(self)
                 on_press: root.parent.ids['r1screen'].callback(self)
 
+            Button:
+                text:"Back"
+                size_hint: (0.25,0.25)
+                pos_hint:(0.1,0.1)
+                bold: True
+                background_color: '8b0000'
+                on_press: root.parent.ids['screen2'].back(self)
+
 <r1Screen>:
     FloatLayout:
         GridLayout:
@@ -107,3 +138,8 @@
                 text: "Invest X monthly in VFV.TO for a year"
                 font_size: 36
                 color: 'FF0000'
+
+<r2Screen>:
+<r3Screen>:
+<r4Screen>:
+<r5Screen>:
