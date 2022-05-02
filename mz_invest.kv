@@ -34,7 +34,7 @@
             source: 'cubes.mp4'
             state: 'play'
             volume: 0
-            allow_stretch: False
+            allow_stretch: True
             options: {'eos': 'loop'}
             opacity: 0.25
 
@@ -58,7 +58,7 @@
                 id: my_input
                 name: 'my_input'
                 multiline: False
-                padding_y: (20,20)
+                padding_y: (30,30)
                 size_hint: (1, 0.5)
 
             Button:
@@ -82,7 +82,7 @@
             source: 'spiral.mp4'
             state: 'play'
             volume: 0
-            allow_stretch: False
+            allow_stretch: True
             options: {'eos': 'loop'}
             opacity: 0.25
 
@@ -127,19 +127,68 @@
 
 <r1Screen>:
     FloatLayout:
+        Video:
+            source: 'stockvideo.mp4'
+            state: 'play'
+            volume: 0
+            allow_stretch: True
+            options: {'eos': 'loop'}
+            opacity: 0.25
         GridLayout:
             cols: 1
             size_hint: (0.6,0.7)
             pos_hint: {"center_x":0.5, "center_y":0.5}
 
             Label:
-                id: my_label
-                name: 'my_label'
+                id: invest
+                name: 'invest'
                 text: "Invest X monthly in VFV.TO for a year"
                 font_size: 36
-                color: 'FF0000'
+                color: '006400'
+
+            Label:
+                id: vfv
+                name: 'vfv'
+                text: "[VFV.TO]"
+                font_size: 72
+                color: '8b0000'
+
+            Label:
+                id: returns
+                name: 'returns'
+                text: "Returns"
+                font_size: 48
+                color: '90EE90'
 
 <r2Screen>:
+    FloatLayout:
+        GridLayout:
+            cols:1
+            Label:
+                text: 'Welcome to r2Screen'
+                halign: 'center'
+                valign: 'middle'
 <r3Screen>:
+    FloatLayout:
+        GridLayout:
+            cols:1
+            Label:
+                text: 'Welcome to r3Screen'
+                halign: 'center'
+                valign: 'middle'
 <r4Screen>:
+    FloatLayout:
+        GridLayout:
+            cols:1
+            Label:
+                text: 'Welcome to r4Screen'
+                halign: 'center'
+                valign: 'middle'
 <r5Screen>:
+    FloatLayout:
+        GridLayout:
+            cols:1
+            Label:
+                text: 'Welcome to r5Screen'
+                halign: 'center'
+                valign: 'middle'

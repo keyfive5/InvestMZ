@@ -9,6 +9,8 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.widget import Widget
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
+from bs4 import BeautifulSoup
+import requests
 
 
 class SM(ScreenManager):
@@ -31,13 +33,20 @@ class Screen1(Screen):
         self.investment = entry
 
 
-        if entry.isnumeric() and int(entry) >= 10000:
-            greeting.text = "Calculating: $" + entry
-            greeting.color = '90EE90'
-            self.manager.current = 'screen2'
-
+        if entry.isnumeric():
+            if int(entry) >= 10000:
+                if int(entry) < 1000000000:
+                    greeting.text = "Calculating: $" + entry
+                    greeting.color = '90EE90'
+                    self.manager.current = 'screen2'
+                else:
+                    greeting.text = "Please keep the amount under a billion"
+                    greeting.color = '90EE90'
+            else:
+                greeting.text = "Please keep the amount above $10,000"
+                greeting.color = '90EE90'
         else:
-            greeting.text = "Invalid"
+            greeting.text = "Please enter a numerical-only value"
             greeting.color = "#FF0000"
 
 class Screen2(Screen):
@@ -77,8 +86,15 @@ class r1Screen(Screen):
         super(r1Screen, self).__init__(**kwargs)
 
     def callback(self, instance):
-        greeting = self.manager.ids['r1screen'].ids.my_label
+        greeting = self.manager.ids['r1screen'].ids.invest
         greeting.text = "Invest " + str(float(Screen1.investment)/12) + " monthly in VFV.TO for a year"
+
+    url = 'https://www.google.com/search?q=vfv.to&ei=hiBvYvKeE87OtQb-_anIDQ&ved=0ahUKEwjy-aXQwr_3AhVOZ80KHf5-CtkQ4dUDCA4&uact=5&oq=vfv.to&gs_lcp=Cgdnd3Mtd2l6EAMyCggAEIAEEEYQ-gEyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BwgAEEcQsAM6BQgAEJECOgoILhDHARDRAxBDOhEILhCABBCxAxCDARDHARCvAToRCC4QgAQQsQMQgwEQxwEQ0QM6EQguEIAEELEDEIMBEMcBEKMCOggILhCABBCxAzoICAAQsQMQgwE6DgguEIAEELEDEMcBENEDOgcIABCxAxBDOgQIABBDOg0ILhCxAxDHARCjAhBDOggIABCABBCxAzoKCAAQsQMQgwEQQ0oECEEYAEoECEYYAFCkCljSEmCKF2gBcAB4AIABf4gBxASSAQM0LjKYAQCgAQHIAQjAAQE&sclient=gws-wiz'
+    result = requests.get(url)
+    doc = BeautifulSoup(result.text, "html.parser")
+    price = doc.find() #???
+
+
 
 class r2Screen(Screen):
     def __init__(self, **kwargs):
